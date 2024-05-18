@@ -101,7 +101,12 @@ public class TenantsController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(tenant);
+
+        IEnumerable<IdNameReferenceItem> emptyIdNameReferenceItemCategories = Enumerable.Empty<IdNameReferenceItem>();
+        IEnumerable<IdNameReferenceItem> emptyIdNameReferenceItemProducts = Enumerable.Empty<IdNameReferenceItem>();
+
+        
+        return View(new TenantViewModel(tenant, emptyIdNameReferenceItemCategories, emptyIdNameReferenceItemProducts));
     }
 
     // GET: Admin/Tenants/Delete/5
